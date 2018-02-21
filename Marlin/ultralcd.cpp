@@ -798,6 +798,7 @@ void kill_screen(const char* lcd_msg) {
       quickstop_stepper();
       print_job_timer.stop();
       thermalManager.disable_all_heaters();
+      enqueue_and_echo_commands_P(PSTR("G27 P2\nM84"));  //park and disable steppers
       #if FAN_COUNT > 0
         for (uint8_t i = 0; i < FAN_COUNT; i++) fanSpeeds[i] = 0;
       #endif
