@@ -797,8 +797,16 @@ void kill_screen(const char* lcd_msg) {
       clear_command_queue();
       quickstop_stepper();
       print_job_timer.stop();
-      thermalManager.disable_all_heaters();
-      enqueue_and_echo_commands_P(PSTR("G27 P2\nM84"));  //park and disable steppers
+
+      /* When stopping manually, it's usually because of a problem...
+      *  and we'll be restarting the print.  Keep the heaters on.
+      */
+      //thermalManager.disable_all_heaters(); 
+
+      //Park and disable steppers
+      //Retract, Lift nozzle, Home, Turn off Fan and Steppers
+      enqueue_and_echo_commands_P(PSTR("G1 E-3 F3000\nG91\nG1 Z1 F3000\nG28 X Y\nM107\nM84"));  
+      
       #if FAN_COUNT > 0
         for (uint8_t i = 0; i < FAN_COUNT; i++) fanSpeeds[i] = 0;
       #endif
