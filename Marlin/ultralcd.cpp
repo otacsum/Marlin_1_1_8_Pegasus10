@@ -805,7 +805,7 @@ void kill_screen(const char* lcd_msg) {
 
       //Park and disable steppers
       //Retract, Lift nozzle, Home, Turn off Fan and Steppers
-      enqueue_and_echo_commands_P(PSTR("G1 E-3 F3000\nG91\nG1 Z1 F3000\nG28 X Y\nM107\nM84"));  
+      enqueue_and_echo_commands_P(PSTR("G91\nG1 E-2.5 F300\nG1 Z5 F3000\nG28 X Y\nM106 S128\nM84"));  
       
       #if FAN_COUNT > 0
         for (uint8_t i = 0; i < FAN_COUNT; i++) fanSpeeds[i] = 0;
