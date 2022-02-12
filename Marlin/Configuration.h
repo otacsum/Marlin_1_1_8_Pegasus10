@@ -354,10 +354,11 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // Ultimaker
-  #define  DEFAULT_Kp 21.39
-  #define  DEFAULT_Ki 1.73
-  #define  DEFAULT_Kd 66.15
+  // Makerfarm Pegasus 10
+  // Updated 2/11/2022 for new 500ºc Thermistor
+  #define  DEFAULT_Kp 46.44
+  #define  DEFAULT_Ki 6.67
+  #define  DEFAULT_Kd 80.84
 
   // MakerGear
   //#define  DEFAULT_Kp 7.0
